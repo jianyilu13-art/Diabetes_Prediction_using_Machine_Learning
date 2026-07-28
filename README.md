@@ -1,30 +1,48 @@
 # 🩺 Diabetes Prediction using Machine Learning
 
-A machine learning project for predicting diabetes using patient health records. This project compares multiple classification algorithms and identifies the most suitable model for early diabetes screening.
+A machine learning project for predicting diabetes risk using patient health records. This project compares multiple classification algorithms and investigates how machine learning can support early diabetes screening.
 
 ---
 
 ## 📖 Overview
 
-This project develops and compares several machine learning models for predicting diabetes using patient health records. The objective is to identify individuals at high risk of diabetes through data-driven classification, supporting early screening and preventive healthcare.
+This project develops and compares several machine learning models for predicting diabetes using demographic, lifestyle, and clinical health indicators.
+
+The objective is to identify individuals at higher risk of diabetes through data-driven classification, supporting early screening and preventive healthcare.
 
 The study uses a cleaned dataset containing **100,000 patient records** with demographic, lifestyle, and clinical information.
 
-### Machine Learning Models
+---
+
+## 🎯 Research Motivation
+
+Diabetes is a major global health challenge, and early identification of high-risk individuals can support preventive intervention.
+
+This project investigates:
+
+- Whether machine learning models can accurately predict diabetes risk from patient records.
+- Which clinical and lifestyle factors contribute most to diabetes prediction.
+- How different classification algorithms perform under an imbalanced dataset.
+
+---
+
+## 🤖 Machine Learning Models
+
+Three classification algorithms were developed and evaluated:
 
 - Logistic Regression
 - Decision Tree
 - K-Nearest Neighbors (KNN)
 
-Since the dataset is highly imbalanced (**8.5% diabetic vs 91.5% non-diabetic**), the project focuses on maximizing **Sensitivity (Recall / True Positive Rate)** rather than simply maximizing accuracy.
+Since the dataset is highly imbalanced (**8.5% diabetic vs 91.5% non-diabetic**), this project focuses not only on accuracy but also on **Sensitivity (Recall / True Positive Rate)**, which measures the ability to correctly identify diabetic patients.
 
 ---
 
-## 📊 Dataset
+# 📊 Dataset
 
 The dataset contains approximately **100,000 observations** and **8 predictor variables**.
 
-### Features
+## Features
 
 | Feature | Description |
 |---------|-------------|
@@ -37,7 +55,9 @@ The dataset contains approximately **100,000 observations** and **8 predictor va
 | HbA1c Level | Long-term blood glucose indicator |
 | Blood Glucose Level | Current blood glucose measurement |
 
-### Target Variable
+---
+
+## Target Variable
 
 | Variable | Description |
 |----------|-------------|
@@ -45,43 +65,43 @@ The dataset contains approximately **100,000 observations** and **8 predictor va
 
 ---
 
-## 🔍 Exploratory Data Analysis
+# 🔍 Exploratory Data Analysis
 
 The exploratory analysis reveals several important relationships between patient characteristics and diabetes risk.
 
 | Variable | Observation |
 |----------|-------------|
-| Age | Older individuals are more likely to have diabetes. |
-| Hypertension | Patients with hypertension have significantly higher diabetes prevalence. |
-| Heart Disease | Strong positive relationship with diabetes. |
-| Smoking History | Smoking history is associated with increased diabetes risk. |
-| BMI | Higher BMI corresponds to higher diabetes risk. |
-| HbA1c Level | One of the strongest predictors of diabetes. |
-| Blood Glucose Level | Most influential predictor with clear separation between classes. |
-
-### Sample Visualizations
-
-#### Diabetes vs Gender
-
-<img src="images/gender_boxplot.png" width="600">
-
-#### Diabetes vs Age
-
-<img src="images/age_boxplot.png" width="600">
-
-#### Diabetes vs BMI
-
-<img src="images/bmi_boxplot.png" width="600">
-
-#### Diabetes vs Blood Glucose
-
-<img src="images/glucose_boxplot.png" width="600">
+| Age | Older individuals have higher diabetes prevalence. |
+| Hypertension | Patients with hypertension show increased diabetes risk. |
+| Heart Disease | Positive association with diabetes occurrence. |
+| Smoking History | Smoking status is associated with diabetes risk. |
+| BMI | Higher BMI corresponds to higher diabetes prevalence. |
+| HbA1c Level | Strong predictor related to diabetes status. |
+| Blood Glucose Level | One of the strongest predictors with clear class separation. |
 
 ---
 
-## 🤖 Machine Learning Models
+## Sample Visualizations
 
-Three classification algorithms were developed and evaluated.
+### Categorical and Numerical Feature Analysis
+
+<div>
+  <img src="images/gender_boxplot.png" width="32%">
+  <img src="images/age_boxplot.png" width="32%">
+  <img src="images/bmi_boxplot.png" width="32%">
+</div>
+
+
+<div>
+  <img src="images/glucose_boxplot.png" width="49%">
+  <img src="images/class_distribution.png" width="49%">
+</div>
+
+---
+
+# 🤖 Model Development
+
+Three classification algorithms were trained and evaluated.
 
 | Model | Description |
 |------|-------------|
@@ -91,79 +111,124 @@ Three classification algorithms were developed and evaluated.
 
 ---
 
-## ⚙️ Model Training
+# ⚙️ Model Training
 
-### Logistic Regression
+## Logistic Regression
 
-- All predictors included
-- ROC analysis performed
-- Optimal threshold selected at **0.2**
-- AUC = **0.962**
+- All predictors included.
+- ROC analysis performed.
+- Optimal classification threshold selected at **0.2**.
+- AUC = **0.962**.
 
 ---
 
-### Decision Tree
+## Decision Tree
 
-- Hyperparameter tuning using Complexity Parameter (cp)
+Hyperparameter tuning was performed using the Complexity Parameter (cp).
 
 ```R
 cp_seq <- 10^seq(-6, -1, 1)
 ```
 
-Best parameter
+Best parameter:
 
 ```text
 cp = 0.0001
 ```
 
-AUC = **0.964**
+Performance:
+
+```
+AUC = 0.964
+```
 
 ---
 
-### K-Nearest Neighbors
+## K-Nearest Neighbors
 
 Numerical variables were standardized before training.
 
-Candidate values
+Candidate values:
 
 ```R
 k = seq(1,401,2)
 ```
 
-Best parameter
+Best parameter:
 
 ```text
 k = 39
 ```
 
-AUC = **0.962**
+Performance:
+
+```
+AUC = 0.962
+```
 
 ---
 
-## 📈 Model Performance
+# 📈 Model Performance
 
 | Model | Accuracy | Sensitivity (TPR) | False Positive Rate | AUC |
 |------|---------:|------------------:|-------------------:|----:|
 | Logistic Regression | 0.939 | 0.766 | 0.045 | 0.962 |
-| Decision Tree | 0.964 | 0.744 | 0.016 | 0.964 |
-| KNN (k=39) | **0.943** | **0.791** | 0.043 | 0.962 |
+| Decision Tree | **0.964** | 0.744 | **0.016** | **0.964** |
+| KNN (k=39) | 0.943 | **0.791** | 0.043 | 0.962 |
 
 ---
 
-## 🏆 Best Model
+# 🏆 Model Comparison Summary
 
-**K-Nearest Neighbors (KNN)** achieved the best overall performance.
+The **Decision Tree** achieved the strongest overall predictive performance, obtaining the highest accuracy (**0.964**) and highest AUC (**0.964**).
 
-### Advantages
+However, **K-Nearest Neighbors (KNN)** achieved the highest sensitivity (**0.791**), meaning it identified more diabetic patients correctly.
 
-- Highest Sensitivity (0.791)
-- High AUC (0.962)
-- Strong overall prediction ability
-- Captures complex non-linear relationships
+Therefore:
+
+- Decision Tree is preferred when overall classification performance is the priority.
+- KNN may be preferred when minimizing missed diabetes cases is more important.
 
 ---
 
-## 📂 Project Structure
+# 📸 Results Visualization
+
+## ROC Curve Comparison
+
+<img src="images/roc_curve.png" width="700">
+
+
+---
+
+## Decision Tree Structure
+
+<img src="images/decision_tree.png" width="700">
+
+---
+
+# ⚠️ Limitations
+
+- The dataset is highly imbalanced, which may affect minority class prediction.
+- Evaluation was performed using a single train-test split.
+- Additional validation using cross-validation would improve reliability.
+- External healthcare datasets are required before clinical deployment.
+
+---
+
+# 🚀 Future Improvements
+
+Future improvements include:
+
+- Apply Random Forest.
+- Apply XGBoost.
+- Use SMOTE or other imbalance-handling methods.
+- Perform cross-validation.
+- Explain predictions using SHAP.
+- Deploy the model using a Shiny web application.
+
+---
+
+# 📂 Project Structure
 
 ```text
 Diabetes-Prediction/
@@ -178,6 +243,8 @@ Diabetes-Prediction/
 │   ├── roc_curve.png
 │   ├── decision_tree.png
 │   ├── class_distribution.png
+│   ├── gender_boxplot.png
+│   ├── age_boxplot.png
 │   ├── bmi_boxplot.png
 │   └── glucose_boxplot.png
 │
@@ -190,46 +257,19 @@ Diabetes-Prediction/
 
 ---
 
-## 📸 Results
-
-### KNN ROC Curve
-
-<img src="images/roc_curve.png" width="700">
-
----
-
-### Decision Tree
-
-<img src="images/decision_tree.png" width="700">
-
----
-
-## 💻 Technologies Used
+# 💻 Technologies Used
 
 | Category | Tools |
 |----------|-------|
 | Language | R |
-| Libraries | tidyverse |
-| | caret |
-| | class |
-| | rpart |
-| | pROC |
-| | ggplot2 |
+| Data Processing | tidyverse |
+| Visualization | ggplot2 |
+| Classification | rpart, class |
+| Model Evaluation | ROCR, pROC |
 
 ---
 
-## 🚀 Future Improvements
-
-- Apply Random Forest
-- Apply XGBoost
-- Use SMOTE to address class imbalance
-- Perform cross-validation
-- Explain predictions using SHAP
-- Deploy as a Shiny web application
-
----
-
-## 📚 References
+# 📚 References
 
 - Charles Elkan (2001). *The Foundations of Cost-Sensitive Learning.*
 - Davis & Goadrich (2006). *The Relationship Between Precision-Recall and ROC Curves.*
@@ -238,7 +278,7 @@ Diabetes-Prediction/
 
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
 **Lu Jianyi**
 
