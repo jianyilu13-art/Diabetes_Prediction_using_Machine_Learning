@@ -61,9 +61,9 @@ The exploratory analysis reveals several important relationships between patient
 
 ### Sample Visualizations
 
-#### Diabetes Distribution
+#### Diabetes vs Gender
 
-<img src="images/class_distribution.png" width="600">
+<img src="images/gender_boxplot.png" width="600">
 
 #### Diabetes vs Age
 
@@ -167,17 +167,12 @@ AUC = **0.962**
 
 ```text
 Diabetes-Prediction/
+
 │
 ├── data/
-│   └── diabetes.csv
+│   └── diabetes-dataset.csv
 │
-├── R/
-│   ├── data_cleaning.R
-│   ├── exploratory_analysis.R
-│   ├── logistic_regression.R
-│   ├── decision_tree.R
-│   ├── knn.R
-│   └── model_comparison.R
+├── diabetes_prediction.R
 │
 ├── images/
 │   ├── roc_curve.png
@@ -186,15 +181,18 @@ Diabetes-Prediction/
 │   ├── bmi_boxplot.png
 │   └── glucose_boxplot.png
 │
-├── report.pdf
-└── README.md
+├── research_report.pdf
+│
+├── README.md
+│
+└── LICENSE
 ```
 
 ---
 
 ## 📸 Results
 
-### ROC Curve
+### KNN ROC Curve
 
 <img src="images/roc_curve.png" width="700">
 
