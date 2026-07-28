@@ -92,11 +92,6 @@ The exploratory analysis reveals several important relationships between patient
 </div>
 
 
-<div>
-  <img src="images/glucose_boxplot.png" width="49%">
-  <img src="images/class_distribution.png" width="49%">
-</div>
-
 ---
 
 # 🤖 Model Development
@@ -193,18 +188,19 @@ Therefore:
 
 # 📸 Results Visualization
 
-## ROC Curve Comparison
+<table>
+  <tr>
+    <td align="center">
+      <img src="images/roc_curve.png" width="100%"><br>
+      <b>ROC Curve</b>
+    </td>
+    <td align="center">
+      <img src="images/decision_tree.png" width="100%"><br>
+      <b>Decision Tree Structure</b>
+    </td>
+  </tr>
+</table>
 
-<img src="images/roc_curve.png" width="700">
-
-
----
-
-## Decision Tree Structure
-
-<img src="images/decision_tree.png" width="700">
-
----
 
 # ⚠️ Limitations
 
@@ -242,10 +238,8 @@ Diabetes-Prediction/
 ├── images/
 │   ├── roc_curve.png
 │   ├── decision_tree.png
-│   ├── class_distribution.png
 │   ├── gender_boxplot.png
 │   ├── age_boxplot.png
-│   ├── bmi_boxplot.png
 │   └── glucose_boxplot.png
 │
 ├── research_report.pdf
