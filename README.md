@@ -228,10 +228,21 @@ Future improvements include:
 
 ```text
 Diabetes-Prediction/
-
 │
 ├── data/
 │   └── diabetes-dataset.csv
+│
+├── Rcode/
+│   ├── Association Rules.R
+│   ├── Basic Grammar.R
+│   ├── Decision Tree.R
+│   ├── K‑Means.R
+│   ├── KNN.R
+│   ├── Linear Regression.R
+│   ├── Logistic Regression.R
+│   ├── Models Interpretation.R
+│   ├── Naive Bayes.R
+│   └── Plots.R
 │
 ├── diabetes_prediction.R
 │
